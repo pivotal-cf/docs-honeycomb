@@ -1,15 +1,21 @@
 ---
-title: Using YOUR-PRODUCT-NAME
+title: Using Honeycomb Nozzle for PCF
 owner: Partners
 ---
 
-This topic describes how to use YOUR-PRODUCT-NAME.
+This topic describes how to use Honeycomb Nozzle for PCF.
 
-##<a id='using'></a> Using YOUR-PRODUCT-NAME
+##<a id='using'></a> Using Honeycomb Nozzle for PCF
 
-**This topic should include any instructions for how to use the service or dashboard created by the tile. 
-Give procedures for how to perform the different functions offered by your product and provide screenshots where necessary.** 
+Once installed, the nozzle should transparently send log events to Honeycomb. Log in to your Honeycomb account to see the events sent.
 
-**You can also use this section to include information about Architecture and Troubleshooting for known errors. 
-If you include a Troubleshooting section, follow the Symptom/Explanation format used in the 
-[Okta Troubleshooting](http://docs.pivotal.io/p-identity/okta/troubleshooting.html) topic**.
+The Nozzle itself reports some statistics (to Honeycomb). To see these mesasges,
+* log in to https://honeycomb.io
+* use the `Log Messages` dataset
+* under the `Samples` tab, check the field named `hnyNozzleAppID`
+* record the value you see there (it should look something like `f787b2bb-e2e6-4d66-9cc0-e5491ebedbf3`)
+* in the query builder, apply a filter: `logAppId = <your-app-id>`
+
+After building this query, you'll see one event per second reporting the total number of events parsed and any errors.
+
+

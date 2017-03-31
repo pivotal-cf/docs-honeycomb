@@ -1,57 +1,48 @@
 ---
-title: YOUR-PRODUCT-NAME
+title: Honeycomb Nozzle for PCF
 owner: Partners
 ---
 
-**This topic should begin with a brief description of your product. See below for an example.**
-
-This documentation describes the Redis Labs Enterprise Cluster (RLEC) Service Broker for Pivotal Cloud Foundry (PCF). 
-The RLEC Service Broker registers a service broker on PCF and exposes its service plans on the Marketplace. 
-Developers can provision Redis databases by creating instances of the service plans using Apps Manager or the cf CLI.
+This documentation describes the Honeycomb Nozzle for Pivotal Cloud Foundry
+(PCF). The Honeycomb Nozzle listens to the Cloud Foundry logging Firehose,
+parses all the messages it finds there, and sends them to the Honeycomb service,
+https://honeycomb.io. In addition to the PCF-generated logs, application logs
+that appear as JSON objects will be parsed and included, so you can explore your
+application's performance using Honeycomb.
 
 ## <a id='overview'></a>Overview
 
 **The overview should provide a description of the product's key features.**
 
-YOUR-PRODUCT-NAME includes the following key features:
+Honeycomb Nozzle for PCF includes the following key features:
 
-* Feature one.
-* Feature two.
-* Feature three.
+* captures operational metrics about your infrastructure
+* captures system events and HTTP Start/Stop events
+* captures application logs
+
+All these are sent in to Honeycomb for visualization and exploration.
 
 ## <a id="snapshot"></a>Product Snapshot
 
 <dl>
-<dt>YOUR-PRODUCT-NAME details:</dt>
-<dd><strong>Version</strong>: vYOUR-VERSION-NUMBER </dd>
-<dd><strong>Release date</strong>: YOUR-RELEASE-DATE (Ex: August 1, 2016)</dd>
-<dd><strong>Software component version</strong>: vYOUR-SOFTWARE-COMPONENT-VERSION-NUMBER</dd>
-<dd><strong>Compatible Ops Manager version(s)</strong>: vYOUR-COMPATIBLE-OPS-MAN-VERSION (Ex. v1.6.x, v1.7.x)</dd>
-<dd><strong>Compatible Elastic Runtime version(s)</strong>: vYOUR-COMPATIBLE-ELASTIC-RUNTIME-VERSION (Ex. v1.4.x, v1.5.x, v1.6.x)</dd>
-<dd><strong>IaaS support:</strong> AWS?, Azure?, GCP?, OpenStack?, and vSphere?</dd>
+<dt>Honeycomb Nozzle for PCF details:</dt>
+<dd><strong>Version</strong>: v0.1.0 </dd>
+<dd><strong>Release date</strong>: April 18, 2017</dd>
 </dl>
 
 ## <a id="reqs"></a>Requirements
 
-**Provide any general or specific requirements, prerequisites, or dependencies here. 
-A general requirement might be something like, "An AppDynamics account." 
-A specific requirement might be something like, "Packaging Dependencies for Offline Buildpacks."**
+Honeycomb Nozzle for PCF has the following requirements:
 
-YOUR-PRODUCT-NAME has the following requirements:
++ You must have or create an account on https://honeycomb.io before configuring the tile
 
-+ PREREQUISITE-1
-
-+ PREREQUISITE-2
-
-## <a id="limitations"></a>Limitations
-
-**List any known limitations.**
++ You must have or create a PCF API service account with access to Doppler for the nozzle to use
 
 ## <a id="feedback"></a>Feedback
 
-Please provide any bugs, feature requests, or questions to the 
-[Pivotal Cloud Foundry Feedback](mailto:pivotal-cf-feedback@pivotal.io) list or send an email to YOUR-SUPPORT-EMAIL.
+Please provide any bugs, feature requests, or questions to the
+[Pivotal Cloud Foundry Feedback](mailto:pivotal-cf-feedback@pivotal.io) list or send an email to support@honeycomb.io.
 
 ## <a id='license'></a>License
 
-**List any license information here.**
+Honeycomb Nozzle for PCF is released under the Apache License 2.0
