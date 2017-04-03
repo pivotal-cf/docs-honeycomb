@@ -5,55 +5,63 @@ owner: Partners
 
 This topic describes how to install and configure Honeycomb Nozzle for PCF.
 
-##<a id='install'></a> Install and Configure Honeycomb Nozzle for PCF
+##<a id='create'></a> Create an Account on Honeycomb
 
-### Create an account on Honeycomb
+Before you install the Honeycomb Nozzle for PCF tile, you need to have an account on Honeycomb.
 
-Before starting to install the Tile, create an account on https://honeycomb.io by going to https://honeycomb.io/signup
+Complete the following steps to set up a Honeycomb account:
 
-Once you have created an account, get your Team Write Key from https://ui.honeycomb.io/account
+1. Follow the instructions at https://honeycomb.io/signup to create a Honeycomb account and choose a team name. 
 
-### Create system accounts so the Nozzle has access to the firehose
+2. Get your team Write Key from https://ui.honeycomb.io/account
 
-Create a UAA user with access to the Firehose and Cloud Controller:
+##<a id='pcf-accounts'></a>Create PCF System Accounts
 
-* Install the UAA CLI, uaac.
-```
-gem install cf-uaac
-```
+Complete the following steps to create a UAA user that gives the Nozzle access to the Firehose and Cloud Controller.
 
-* Use the uaac target uaa.YOUR-SYSTEM-DOMAIN command to target your UAA server.
-```
-uaac target uaa.sys.example.com
-```
+1. Install the UAA CLI, uaac.
 
-* Record the uaa:admin:client_secret from either
-    * The cf deployment manifest or
-    * The Ops Manager UI, click on Pivotal Elastic Runtime tile, go to credentials tab, UAA -> Admin Client Credentials
+    ```
+    $ gem install cf-uaac
+    ```
 
-* Authenticate to UAA using the client_secret from the previous step
-```
-uaac token client get admin -s ADMIN-CLIENT-SECRET
-```
+2. Use the `uaac target uaa.YOUR-SYSTEM-DOMAIN` command to target your UAA server:
 
-* Create a Honeycomb Nozzle user with the password of your choosing.
-```
-uaac -t user add honeycomb-nozzle-user --password PASSWORD --emails na
-```
+    ```
+    $ uaac target uaa.sys.example.com
+    ```
 
-* Add the user to the Cloud Controller Admin Read-Only group.
-```
-uaac -t member add cloud_controller.admin_read_only honeycomb-nozzle-user
-```
+3. Record the `uaa:admin:client_secret` from either:
+    * The cf deployment manifest 
+    * The Ops Manager UI, click the Pivotal Elastic Runtime tile, go to credentials tab, UAA > Admin Client Credentials
 
-* Add the user to the Doppler Firehose group.
-```
-uaac -t member add doppler.firehose honeycomb-nozzle-user
-```
+4. Authenticate to UAA using the client_secret from the previous step
 
-For information about creating a UAA user, see the [Creating and Managing Users with the UAA CLI](http://docs.pivotal.io/pivotalcf/adminguide/uaa-user-management.html) topic.
+    ```
+    $  uaac token client get admin -s ADMIN-CLIENT-SECRET
+    ```
 
-### Install and Configure the Tile
+5. Create a Honeycomb Nozzle user with the password of your choosing:
+
+    ```
+    $ uaac -t user add honeycomb-nozzle-user --password PASSWORD --emails na
+    ```
+
+6. Add the user to the Cloud Controller Admin Read-Only group:
+
+    ```
+    $ uaac -t member add cloud_controller.admin_read_only honeycomb-nozzle-user
+    ```
+
+7. Add the user to the Doppler Firehose group:
+
+    ```
+    $ uaac -t member add doppler.firehose honeycomb-nozzle-user
+    ```
+
+For information about creating a UAA user, see [Creating and Managing Users with the UAA CLI](http://docs.pivotal.io/pivotalcf/adminguide/uaa-user-management.html).
+
+##<a id='install'></a>Install and Configure the Tile
 
 1. Download the product file from Pivotal Network.
 

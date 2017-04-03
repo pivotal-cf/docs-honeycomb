@@ -1,28 +1,52 @@
 ---
-title: Honeycomb Nozzle for PCF
+title: Honeycomb Nozzle for PCF (Beta)
 owner: Partners
 ---
 
-This documentation describes the Honeycomb Nozzle for Pivotal Cloud Foundry
-(PCF). The Honeycomb Nozzle listens to the Cloud Foundry logging Firehose,
+
+<style>
+    .note.warning {
+        background-color: #fdd;
+        border-color: #fbb
+    }
+
+    .note.warning:before {
+        color: #f99;
+     }
+</style>
+
+<p class="note warning">
+<strong>IMPORTANT: </strong>
+The Honeycomb Nozzle for Pivotal Cloud Foundry (PCF) tile is currently in beta and is intended for evaluation and test purposes only.
+Do not use this product in a PCF production environment.
+</p>
+
+This documentation describes the Honeycomb Nozzle for PCF. 
+
+The Honeycomb Nozzle listens to the Pivotal Cloud Foundry logging Firehose,
 parses all the messages it finds there, and sends them to the Honeycomb service,
-https://honeycomb.io. In addition to the PCF-generated logs, application logs
-that appear as JSON objects will be parsed and included, so you can explore your
-application's performance using Honeycomb.
+https://honeycomb.io. 
+
+In addition to the PCF-generated logs, application logs
+that appear as JSON objects are parsed and included, so you can explore your
+app performance using Honeycomb.
 
 ## <a id='overview'></a>Overview
 
-**The overview should provide a description of the product's key features.**
-
 Honeycomb Nozzle for PCF includes the following key features:
 
-* captures operational metrics about your infrastructure
-* captures system events and HTTP Start/Stop events
-* captures application logs
+* Captures operational metrics about your infrastructure
+* Captures system events and HTTP Start/Stop events
+* Captures application logs
 
-All these are sent in to Honeycomb for visualization and exploration.
+These are sent to Honeycomb for visualization and exploration.
+
+**Note to authors: Add a couple of sentences about Honeycomb here. Assume that the reader does not know
+what Honeycomb is or why it would be used in preference to any other nozzle.**
 
 ## <a id="snapshot"></a>Product Snapshot
+
+The following table provides version and version-support information about Honeycomb Nozzle for PCF.
 
 <table class="nice">
     <th>Element</th>

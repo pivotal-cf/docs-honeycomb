@@ -5,17 +5,31 @@ owner: Partners
 
 This topic describes how to use Honeycomb Nozzle for PCF.
 
-##<a id='using'></a> Using Honeycomb Nozzle for PCF
+After installation, the Honeycomb Nozzle for PCF should transparently send log events to Honeycomb. 
 
-Once installed, the nozzle should transparently send log events to Honeycomb. Log in to your Honeycomb account to see the events sent.
+**Note to Authors: Your use of "should" above concerns me. Are you planning a troubleshooting page about what to do if
+the nozzle does not send log events to Honeycomb? 
+Or can we write: "the Honeycomb Nozzle for PCF transparently sends..."**
 
-The Nozzle itself reports some statistics (to Honeycomb). To see these mesasges,
-* log in to https://honeycomb.io
-* use the `Log Messages` dataset
-* under the `Samples` tab, check the field named `hnyNozzleAppID`
-* record the value you see there (it should look something like `f787b2bb-e2e6-4d66-9cc0-e5491ebedbf3`)
-* in the query builder, apply a filter: `logAppId = <your-app-id>`
+##<a id="events"></a> View Events
 
-After building this query, you'll see one event per second reporting the total number of events parsed and any errors.
+To see the events:
+
+* Log in to your Honeycomb account.
+
+##<a id="statistics"></a> View Statistics
+
+To see statistics that the nozzle reports to Honeycomb:
+
+**Note to Authors: Consider adding a screenshot or two to this procedure.**
+
+1. Log in to https://honeycomb.io.
+1. Use the **Log Messages** dataset.
+1. Under the **Samples** tab, check the field named **hnyNozzleAppID**.
+1. Record the value you see there. It should look something like `f787b2bb-e2e6-4d66-9cc0-e5491ebedbf3`.
+1. In the query builder, apply a filter: **logAppId = YOUR-APP-ID**<br>
+   Where YOUR-APP-ID is the value recorded in the step above.
+
+  After building this query, you see one event per second reporting the total number of events parsed and any errors.
 
 

@@ -1,5 +1,9 @@
 ## Pivotal Cloud Foundry Partners Template
 
+### Style Notes for Honeycomb
+
+Tile name: **Honeycomb Nozzle for PCF** (on first use in text spell out as **Honeycomb Nozzle for Pivotal Cloud Foundry (PCF)**).
+The product that the tile enables PCF app developers and operators to use is **Honeycomb**.
 This template helps partners prepare documentation for Pivotal Cloud Foundry (PCF) partner services that appear on [Pivotal Network](https://network.pivotal.io/). 
 
 ### <a id='overview'></a>Overview
