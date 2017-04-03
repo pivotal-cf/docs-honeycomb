@@ -3,7 +3,7 @@ title: Installing and Configuring Honeycomb Nozzle for PCF
 owner: Partners
 ---
 
-This topic describes how to install and configure Honeycomb Nozzle for PCF.
+This topic describes how to install and configure Honeycomb Nozzle for Pivotal Cloud Foundry (PCF).
 
 ##<a id='create'></a> Create an Account on Honeycomb
 
@@ -13,19 +13,19 @@ Complete the following steps to set up a Honeycomb account:
 
 1. Follow the instructions at https://honeycomb.io/signup to create a Honeycomb account and choose a team name. 
 
-2. Get your team Write Key from https://ui.honeycomb.io/account
+2. Record your team Write Key from https://ui.honeycomb.io/account.
 
 ##<a id='pcf-accounts'></a>Create PCF System Accounts
 
 Complete the following steps to create a UAA user that gives the Nozzle access to the Firehose and Cloud Controller.
 
-1. Install the UAA CLI, uaac.
+1. Install the UAA Command Line Interface (CLI) tool, uaac:
 
     ```
     $ gem install cf-uaac
     ```
 
-2. Use the `uaac target uaa.YOUR-SYSTEM-DOMAIN` command to target your UAA server:
+2. Use the `uaac target uaa.YOUR-SYSTEM-DOMAIN` command to target your UAA server, for example:
 
     ```
     $ uaac target uaa.sys.example.com
@@ -33,15 +33,15 @@ Complete the following steps to create a UAA user that gives the Nozzle access t
 
 3. Record the `uaa:admin:client_secret` from either:
     * The cf deployment manifest 
-    * The Ops Manager UI, click the Pivotal Elastic Runtime tile, go to credentials tab, UAA > Admin Client Credentials
+    * The Ops Manager Installation Dashboard, click the Pivotal Elastic Runtime tile, click **Credentials**, **UAA** > **Admin Client Credentials**
 
-4. Authenticate to UAA using the client_secret from the previous step
+4. Authenticate to UAA using the `client_secret` from the previous step:
 
     ```
     $  uaac token client get admin -s ADMIN-CLIENT-SECRET
     ```
 
-5. Create a Honeycomb Nozzle user with the password of your choosing:
+5. Create a Honeycomb Nozzle user with a password of your choice:
 
     ```
     $ uaac -t user add honeycomb-nozzle-user --password PASSWORD --emails na
@@ -72,9 +72,11 @@ This adds the tile to your staging area.
 
 1. Click the newly added **Honeycomb Nozzle for PCF** tile.
 
-1. Fill in your Honeycomb Write Key (available from https://ui.honeycomb.io/accounts)
+1. Fill in your team Write Key. See [Create an Account on Honeycomb](#create) above.
 
-1. Fill in the account and credentials you created before
+1. Fill in the account and credentials you created before.
+
+    **Note to authors: Please clarify if this the username and password that you create in step 5 of "Create PCF System Accounts" (honeycomb-nozzle-user and PASSWORD)? or the Honeycomb account that you set up at the top of this page.**
 
 1. Click **Save**.
 
