@@ -1,28 +1,74 @@
 ---
-title: Installing and Configuring YOUR-PRODUCT-NAME
+title: Installing and Configuring Honeycomb Nozzle for PCF
 owner: Partners
 ---
 
-This topic describes how to install and configure YOUR-PRODUCT-NAME.
+This topic describes how to install and configure Honeycomb Nozzle for PCF.
 
-##<a id='install'></a> Install and Configure YOUR-PRODUCT-NAME
+##<a id='install'></a> Install and Configure Honeycomb Nozzle for PCF
+
+### Create an account on Honeycomb
+
+Before starting to install the Tile, create an account on https://honeycomb.io by going to https://honeycomb.io/signup
+
+Once you have created an account, get your Team Write Key from https://ui.honeycomb.io/account
+
+### Create system accounts so the Nozzle has access to the firehose
+
+Create a UAA user with access to the Firehose and Cloud Controller:
+
+* Install the UAA CLI, uaac.
+```
+gem install cf-uaac
+```
+
+* Use the uaac target uaa.YOUR-SYSTEM-DOMAIN command to target your UAA server.
+```
+uaac target uaa.sys.example.com
+```
+
+* Record the uaa:admin:client_secret from either
+    * The cf deployment manifest or
+    * The Ops Manager UI, click on Pivotal Elastic Runtime tile, go to credentials tab, UAA -> Admin Client Credentials
+
+* Authenticate to UAA using the client_secret from the previous step
+```
+uaac token client get admin -s ADMIN-CLIENT-SECRET
+```
+
+* Create a Honeycomb Nozzle user with the password of your choosing.
+```
+uaac -t user add honeycomb-nozzle-user --password PASSWORD --emails na
+```
+
+* Add the user to the Cloud Controller Admin Read-Only group.
+```
+uaac -t member add cloud_controller.admin_read_only honeycomb-nozzle-user
+```
+
+* Add the user to the Doppler Firehose group.
+```
+uaac -t member add doppler.firehose honeycomb-nozzle-user
+```
+
+For information about creating a UAA user, see the [Creating and Managing Users with the UAA CLI](http://docs.pivotal.io/pivotalcf/adminguide/uaa-user-management.html) topic.
+
+### Install and Configure the Tile
 
 1. Download the product file from Pivotal Network.
 
-1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file. 
+1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file.
 
-1. Under the **Import a Product** button, click **+** next to the version number of YOUR-PRODUCT-NAME. 
+1. Under the **Import a Product** button, click **+** next to the version number of Honeycomb Nozzle for PCF.
 This adds the tile to your staging area.
 
-1. Click the newly added **YOUR-PRODUCT-NAME** tile.
+1. Click the newly added **Honeycomb Nozzle for PCF** tile.
 
-1. **This portion of the procedure should tell the users how to configure the newly added tile by
-walking them through the sections. Which fields should they fill out? What are the different
-checkboxes? Include relevant screenshots here.** 
+1. Fill in your Honeycomb Write Key (available from https://ui.honeycomb.io/accounts)
+
+1. Fill in the account and credentials you created before
 
 1. Click **Save**.
 
-1. Return to the Ops Manager Installation Dashboard and click **Apply Changes** to install YOUR-PRODUCT-NAME tile.
+1. Return to the Ops Manager Installation Dashboard and click **Apply Changes** to install Honeycomb Nozzle for PCF tile.
 
-**If needed, include additional configuration information below. For example, maybe there are
-configuration options not required for installation but which could be useful for certain users.**
