@@ -7,11 +7,11 @@ This topic describes how to install and configure Honeycomb Nozzle for Pivotal C
 
 ##<a id='create'></a> Create an Account on Honeycomb
 
-Before you install the Honeycomb Nozzle for PCF tile, you need to have an account on Honeycomb.
+Before you install the Honeycomb Nozzle for PCF tile, you need to have an account on Honeycomb. If you have an existing account, record the team Write Key for that account; no need to create a new one.
 
 Complete the following steps to set up a Honeycomb account:
 
-1. Follow the instructions at https://honeycomb.io/signup to create a Honeycomb account and choose a team name. 
+1. Follow the instructions at https://honeycomb.io/signup to create a Honeycomb account and choose a team name.
 
 2. Record your team Write Key from https://ui.honeycomb.io/account.
 
@@ -32,7 +32,7 @@ Complete the following steps to create a UAA user that gives the Nozzle access t
     ```
 
 3. Record the `uaa:admin:client_secret` from either:
-    * The cf deployment manifest 
+    * The cf deployment manifest
     * The Ops Manager Installation Dashboard, click the Pivotal Elastic Runtime tile, click **Credentials**, **UAA** > **Admin Client Credentials**
 
 4. Authenticate to UAA using the `client_secret` from the previous step:
@@ -72,11 +72,17 @@ This adds the tile to your staging area.
 
 1. Click the newly added **Honeycomb Nozzle for PCF** tile.
 
-1. Fill in your team Write Key. See [Create an Account on Honeycomb](#create) above.
-
-1. Fill in the account and credentials you created before.
-
-    **Note to authors: Please clarify if this the username and password that you create in step 5 of "Create PCF System Accounts" (honeycomb-nozzle-user and PASSWORD)? or the Honeycomb account that you set up at the top of this page.**
+1. Fill in all the fields under the **Hnoeycomb Nozzle** heading.
+  <%= image_tag("images/honeycomb-nozzle-setup.png") %>
+  * **Write Key** See [Create an Account on Honeycomb](#create) above
+  * **Sample Rate** Start with 1 here, and increase it to reduce the amount of data you send to Honeycomb
+  * **Send Metrics** The PCF Firehose reports both log events and metrics. Set this to:
+  ** **true** to send both metrics and log events to Honeycomb
+  ** **false** to drop metrics and only send log events to Honeycomb
+  * **Skip SSL Verification** set this to **true** if you are not using SSL or your SSL certificates don't have a path back to a known root authority
+  * **UAA API user account name** this is the user you added using the uaac client (`honeycomb-nozzle-user` in the example above)
+  * **UAA API user account password** this is the password you set using the uaac client (`PASSWORD` in the example above)
+  * **API URL** this is the API endpoint for your PCF cluster
 
 1. Click **Save**.
 
