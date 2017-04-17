@@ -72,17 +72,19 @@ This adds the tile to your staging area.
 
 1. Click the newly added **Honeycomb Nozzle for PCF** tile.
 
-1. Fill in all the fields under the **Hnoeycomb Nozzle** heading.
+1. On the **Settings** tab of your Honeycomb Nozzle for PCF tile, click **Honeycomb Nozzle for PCF**.
+
+1. Complete the fields:
   <%= image_tag("images/honeycomb-nozzle-setup.png") %>
-  * **Write Key** See [Create an Account on Honeycomb](#create) above
-  * **Sample Rate** Start with 1 here, and increase it to reduce the amount of data you send to Honeycomb
-  * **Send Metrics** The PCF Firehose reports both log events and metrics. Set this to:
-  ** **true** to send both metrics and log events to Honeycomb
-  ** **false** to drop metrics and only send log events to Honeycomb
-  * **Skip SSL Verification** set this to **true** if you are not using SSL or your SSL certificates don't have a path back to a known root authority
-  * **UAA API user account name** this is the user you added using the uaac client (`honeycomb-nozzle-user` in the example above)
-  * **UAA API user account password** this is the password you set using the uaac client (`PASSWORD` in the example above)
-  * **API URL** this is the API endpoint for your PCF cluster
+  * **Write Key**: See [Create an Account on Honeycomb](#create) above.
+  * **Sample Rate**: Start with 1 here, and increase it to reduce the amount of data you send to Honeycomb.
+  * **Send Metrics**: The PCF Firehose reports both log events and metrics:
+      * Set to **true** to send both metrics and log events to Honeycomb.
+      * Set to **false** to drop metrics and only send log events to Honeycomb.
+  * **Skip SSL Verification**: Set this to **true** if you are not using SSL or your SSL certificates don't have a path back to a known root authority.
+  * **UAA API user account name**: Enter the user you added using the uaac client (`honeycomb-nozzle-user` in the example above).
+  * **UAA API user account password**: Enter the password you set using the uaac client (`PASSWORD` in the example above).
+  * **API URL**: Enter the API endpoint for your PCF cluster.
 
 1. Click **Save**.
 

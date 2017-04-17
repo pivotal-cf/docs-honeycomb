@@ -34,13 +34,15 @@ To see statistics that the nozzle reports to Honeycomb:
 
 ##<a id="troubleshooting"></a> Troubleshooting
 
-If you don't see any events showing up in Honeycomb
+If you don't see any events showing up in Honeycomb, do the following:
 
-* Verify the Write Key works for sending events to Honeycomb via curl. You should get a 200 response back and see the dataset created and see the event in the `Samples` tab on the top of the screen
+* Verify that the Write Key works for sending events to Honeycomb via curl. You should get a 200 response back and see the dataset created 
+and see the event in the **Samples** tab on the top of the screen.
 ```
   curl https://api.honeycomb.io/1/events/TestCurl -X POST -H "X-Honeycomb-Team: YOUR-WRITE-KEY-HERE" \
   -d '{"key":"val","key2":"val2"}' -vvv
 ```
-* Check the logs for the tile (via the `cf logs`command in a terminal) for anything that looks like an error
-** trouble talking to the CF API
-** trouble authenticating with the CF API
+* Check the logs for the tile (via the `cf logs`command in a terminal) for anything that looks like an error, for example:
+
+  * Trouble talking to the CF API
+  * Trouble authenticating with the CF API
