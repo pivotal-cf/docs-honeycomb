@@ -5,23 +5,23 @@ owner: Partners
 
 This topic describes how to use Honeycomb Nozzle for PCF.
 
-After installation, the Honeycomb Nozzle for PCF should transparently send log events to Honeycomb. 
-
-**Note to Authors: Your use of "should" above concerns me. Are you planning a troubleshooting page about what to do if
-the nozzle does not send log events to Honeycomb? 
-Or can we write: "the Honeycomb Nozzle for PCF transparently sends..."**
+After installation, the Honeycomb Nozzle for PCF transparently sends log events to Honeycomb.
 
 ##<a id="events"></a> View Events
 
 To see the events:
 
 * Log in to your Honeycomb account.
+* You will see several new Datasets prefixed by the letters `CF` (eg `CF Logs`, `CF Errors`, etc.)
+* Click through to one of them and begin constructing queries!
+** Try a Breakdown by `logAppId` and `logAppName` and a Calculation of `COUNT` - this will show you the volume of traffic per app in your system.
+<%= image_tag("images/cf-logs-query.png") %>
+
+For more details on how to use Honeycomb, refer to the [Honeycomb docs](https://docs.honeycomb.io)
 
 ##<a id="statistics"></a> View Statistics
 
 To see statistics that the nozzle reports to Honeycomb:
-
-**Note to Authors: Consider adding a screenshot or two to this procedure.**
 
 1. Log in to https://honeycomb.io.
 1. Use the **Log Messages** dataset.
@@ -32,4 +32,15 @@ To see statistics that the nozzle reports to Honeycomb:
 
   After building this query, you see one event per second reporting the total number of events parsed and any errors.
 
+##<a id="troubleshooting"></a> Troubleshooting
 
+If you don't see any events showing up in Honeycomb
+
+* Verify the Write Key works for sending events to Honeycomb via curl. You should get a 200 response back and see the dataset created and see the event in the `Samples` tab on the top of the screen
+```
+  curl https://api.honeycomb.io/1/events/TestCurl -X POST -H "X-Honeycomb-Team: YOUR-WRITE-KEY-HERE" \
+  -d '{"key":"val","key2":"val2"}' -vvv
+```
+* Check the logs for the tile (via the `cf logs`command in a terminal) for anything that looks like an error
+** trouble talking to the CF API
+** trouble authenticating with the CF API
