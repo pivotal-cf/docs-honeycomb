@@ -77,7 +77,8 @@ This adds the tile to your staging area.
 1. Complete the fields:
   <%= image_tag("images/honeycomb-nozzle-setup.png") %>
   * **Write Key**: See [Create an Account on Honeycomb](#create) above.
-  * **Sample Rate**: Start with 1 here, and increase it to reduce the amount of data you send to Honeycomb—will send 1 event for every n received.
+  * **Sample Rate**: Start with the default `1`. Later, if you need to reduce the amount of data sent to Honeycomb, 
+     increase this rate. For example, set to `3` to send 1 event for every 3 received.
   * **Send Metrics**: The PCF Firehose reports both log events and metrics:
       * Set to **true** to send both metrics and log events to Honeycomb.
       * Set to **false** to drop metrics and only send log events to Honeycomb (recommended).
