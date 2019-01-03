@@ -1,3 +1,5 @@
+## Tile Retired from Pivotal Network. This Documentation Repo is now obsolete.
+
 ## Pivotal Cloud Foundry Partners Template
 
 ### Style Notes for Honeycomb
